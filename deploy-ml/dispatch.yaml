@@ -1,0 +1,7 @@
+dispatch:
+  # Route traffic for predict-app to the service named "predict-app"
+  - url: "educollab-capstone.et.r.appspot.com/predict-app/*"
+    service: predict-app  # Directs traffic to the 'predict-app' service
+  # You can add additional routing rules for other services
+  - url: "educollab-capstone.et.r.appspot.com/*"
+    service: default  # Routes remaining traffic to the 'default' service (e.g., your first app)

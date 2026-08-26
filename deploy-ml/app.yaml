@@ -1,0 +1,17 @@
+runtime: python311 # Define the runtime, adjust based on your app's language (e.g., python310 for Python 3.10)
+
+instance_class: F2 # Choose the instance class that best fits your app's needs
+
+service: predict-app # This is the service name you want to give to this app
+
+handlers:
+  - url: /static # Static file handling, adjust if needed
+    static_dir: static/
+  - url: /.* # Catch-all handler for all other routes
+    script: auto # Automatically route requests to the right script
+
+automatic_scaling:
+  min_instances: 1 # Minimum number of instances to keep running
+  max_instances: 3 # Maximum number of instances to scale up to
+
+entrypoint: gunicorn -b :$PORT app:app # This should match your app's entry point (for a Flask app, for example)
